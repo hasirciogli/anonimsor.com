@@ -1,20 +1,57 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet, Text, View, StatusBar, Platform, SafeAreaView, TouchableOpacity, Alert, PermissionsAndroid, ActivityIndicator } from 'react-native';
+import { useState } from 'react';
+
+import { useFonts } from 'expo-font';
+
+import { HomeScreen } from './pages/home';
+import { LoginScreen } from './pages/auth';
+import { LoadingScreen } from './pages/loadingScreen';
+import { PermissionRequestScreen } from './pages/requestPermissionsScreen';
+import { ProfileScreen } from './pages/profile';
+import { QuestScreen } from './pages/questPage';
+
+
+
+
+const Stack = createNativeStackNavigator();
+
+function MyStack() {
+  return (
+    <Stack.Navigator initialRouteName='Loading'>
+      <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
+      <Stack.Screen options={{ headerShown: true, headerShadowVisible: false, headerTitle: "Back", headerStyle: {}}} name="QuestPage" component={QuestScreen} />
+
+
+
+
+      <Stack.Screen options={{ headerShown: true, headerStyle: {}}} name="Profile" component={ProfileScreen} />
+      <Stack.Screen options={{ headerShown: false }} name="Loading" component={LoadingScreen} />
+      <Stack.Screen options={{ headerShown: false }} name="PermissionRequest" component={PermissionRequestScreen} />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Open-Sans-v1': require('./assets/fonts/opensansv1.ttf'),
+  });
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <NavigationContainer>
+        <MyStack />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    backgroundColor: "white"
+  }
 });

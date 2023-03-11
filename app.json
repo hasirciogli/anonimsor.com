@@ -1,13 +1,12 @@
 {
   "expo": {
-    "name": "anonimsor",
+    "name": "Anonim Sor",
     "slug": "anonimsor",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,13 +17,20 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.hsrcsoft.anonimsorcom",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b1bcc6c8-1a1c-456f-bc2d-be2400ccdcb6"
+      }
     }
   }
 }
