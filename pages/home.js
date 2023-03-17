@@ -18,10 +18,12 @@ export const HomeScreen = ({ navigation }) => {
         
     }
 
+    
+
     useEffect(() => {
         //setIntervalx(setInterval(() => setState({ time: Date.now() }), 1000));
 
-        setTimeout(() => {
+        setTimeout(() => { 
             getQuests((q) => {
                 setData(q);
                 setLoading(false);

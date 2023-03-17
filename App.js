@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useFonts } from 'expo-font';
 
 import { HomeScreen } from './pages/home';
-import { LoginScreen } from './pages/auth';
+import { LoginScreen, RegisterScreen, AuthScreen } from './pages/auth';
 import { LoadingScreen } from './pages/loadingScreen';
 import { PermissionRequestScreen } from './pages/requestPermissionsScreen';
 import { ProfileScreen } from './pages/profile';
@@ -29,6 +29,9 @@ function MyStack() {
       <Stack.Screen options={{ headerShown: true, headerStyle: {}}} name="Profile" component={ProfileScreen} />
       <Stack.Screen options={{ headerShown: false }} name="Loading" component={LoadingScreen} />
       <Stack.Screen options={{ headerShown: false }} name="PermissionRequest" component={PermissionRequestScreen} />
+      <Stack.Screen options={{ headerShown: false }} name="Auth" component={AuthScreen} />
+      <Stack.Screen options={{ headerShown: true }} name="Login" component={LoginScreen} />
+      <Stack.Screen options={{ headerShown: true }} name="Register" component={RegisterScreen} />
     </Stack.Navigator>
   );
 }

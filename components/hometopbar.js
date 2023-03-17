@@ -6,6 +6,7 @@ import { isLoggedIn, getUser } from '../internal_modules/localsession';
 export const TopBar = props => {
     const checkIsLogged = isLoggedIn();
     const loggedInUser = getUser();
+
     return (
         <View style={styles.topbar}>
             <Text style={{ fontWeight: "bold" }}>Anonim<Text style={{ color: "red" }}>sor.com</Text></Text>
@@ -32,7 +33,12 @@ export const TopBar = props => {
                                 <Text style={{ color: "rgba(255, 255, 255, 255)", fontSize: 12 }}>+</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.rLoginBtn}>
-                                <Text style={{ color: "rgba(255, 255, 255, 255)", fontSize: 13 }}>Giriş Yap</Text>
+                                <Text 
+                                    style={{ color: "rgba(255, 255, 255, 255)", fontSize: 13 }}
+                                    onPress={() => { props.nref.replace("Auth")}}
+                                >
+                                    Giriş Yap
+                                </Text>
                             </TouchableOpacity>
                         </>
                     )
@@ -52,13 +58,12 @@ const styles = StyleSheet.create({
         height: 55,
         minHeight: 55,
         maxHeight: 55,
-        borderBottomWidth: 1,
-        borderBottomColor: "rgba(60, 60, 60, 0.5)",
         alignItems: "center",
         paddingHorizontal: 10,
         justifyContent: "center",
         justifyContent: "space-between",
-        backgroundColor: "white"
+        backgroundColor: "white",
+        backgroundColor: "transparent"
     },
     rLoginBtn: {
         flex: 1,
